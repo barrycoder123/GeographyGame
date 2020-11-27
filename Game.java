@@ -42,17 +42,54 @@ public class Game {
 	Scanner sc = new Scanner(System.in);
 	String name;
 	//Start Game
- 	System.out.println("Welcome To The Geography Game!\nPlease enter the name of the contestants. When you are done, enter \"done\".");
+ 	System.out.print("Welcome To The Geography Game!\nPlease enter the name");
+    System.out.println("of the contestants. When you are done, enter \"done\".");
+    
+    //while (sc.next().compareTo("done") != 0) {
 
-	do{
-		name = sc.next();
-		Player nameInput = new Player(name);	
+		//Player nameInput = new Player(sc.next());	
+    //}
+    Player[] players = new Player[2];
+    int k = 0;
+    do{
+        name = sc.next();
+        if (!name.equals("done"))
+            players[k] = new Player(name);
+        k++;
+    } while(name.compareTo("done") != 0); 
+    
+    // game loop
+    //while (players[0].accessScore() < 11 || players[1].accessScore() < 11) {
 
-	} while(Integer.parseInt(name) != 0); 
+        //for (Player p: players) 
+            //p.showScores();
+    
+    // generate random countries
+    //
 
-		
 
     }
 
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -33,7 +33,9 @@ public class Player {
         System.out.println(String.format("%10s's score: %10d \n",name, points));
     }
 
-    
+    public void accessScore() {
+        return this.points;
+    }
 
 
 
