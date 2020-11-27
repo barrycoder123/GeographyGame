@@ -48,7 +48,7 @@ public class Player {
 	}
 
 	public int accessScore() {
-		return (this.points);
+		return (points);
 	}
 
 	public String getName() {

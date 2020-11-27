@@ -61,8 +61,9 @@ public class Game {
 		Random rn = new Random();
 
 		// game loop
-		while (players[0].accessScore() < 1 || players[1].accessScore() < 1 || players[2].accessScore() < 1) {
-
+		boolean end = false;
+		while (end == false) {
+			System.out.println(players[0].accessScore() + " " + players[1].accessScore());
 			for(int j = 0; j < 3; j++){
 				String currentCountry = countries[rn.nextInt(196)]; 
 				System.out.print("\n"+ players[j].getName() + ", it's your turn.  What is the capital of ");
@@ -73,8 +74,9 @@ public class Game {
 	
 			for (Player p: players) 
 				p.showScores();
-
-
+			if(players[0].accessScore() == 10 || players[1].accessScore() == 10 || players[2].accessScore() == 10){
+				end = true;
+			}
 		}
 	}
 }
