@@ -8,7 +8,9 @@ public class Game {
 
 
 	public static void main(String[] args)  throws Exception { 
-
+			
+		if(args[0].equalsIgnoreCase("Hello")){System.out.println("Hello");}
+		
 		// READ FROM THE FILE
 		// TODO: 
 		// open file 
@@ -54,10 +56,13 @@ public class Game {
 		int k = 0;
 		do{
 			name = sc.next();
-			if (!name.equals("done"))
-				players[k] = new Player(name);
-			k++;
-		} while(name.compareTo("done") != 0); 
+			if (!name.equals("done")){
+				players[k++] = new Player(name);
+			} else if(k!=3){
+				name = "";
+			}
+		
+		} while(!name.equals("done")); 
 
 		Random rn = new Random();
 
