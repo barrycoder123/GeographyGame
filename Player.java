@@ -6,7 +6,7 @@ public class Player {
 
 
     // public:
-    public Player(string player_name) {
+    public Player(String player_name) {
         this.points = 0;
         this.name = player_name;
     }
@@ -30,7 +30,7 @@ public class Player {
     }
 
     public void showScores() {
-        System.out.println(name + "Your score is: " + points + "\n");
+        System.out.println(String.format("%10s's score: %10d \n",name, points));
     }
 
     

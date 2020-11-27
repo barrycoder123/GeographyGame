@@ -28,24 +28,29 @@ public class Game {
 
             line = file.nextLine(); // get the whole line - string
             countries[i] = line.substring(0, line.indexOf('-')).trim();
-            System.out.println("this is the country we read in: " + countries[i]);
             capitals[i] = line.substring(line.indexOf('-') + 1, line.length()).trim();
-            System.out.println("this is the capital we read in: " + capitals[i]);
             i++;
 
         }
 
         // populate the map
-        //
+        
         for (int j = 0; j < 195; ++j) {
             data.put(countries[j], capitals[j]);
         }
+	
+	Scanner sc = new Scanner(System.in);
+	String name;
+	//Start Game
+ 	System.out.println("Welcome To The Geography Game!\nPlease enter the name of the contestants. When you are done, enter \"done\".");
 
-        
-        System.out.println("size of the map is: " + data.size());
-        System.out.println(data);
+	do{
+		name = sc.next();
+		Player nameInput = new Player(name);	
 
-        
+	} while(Integer.parseInt(name) != 0); 
+
+		
 
     }
 
