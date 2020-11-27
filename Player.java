@@ -6,17 +6,34 @@ public class Player {
 
 
     // public:
+    public Player(string player_name) {
+        this.points = 0;
+        this.name = player_name;
+    }
 
     public void move(String country, HashMap<String, String> data) {
         //System.out.println(Game.data);
         Scanner input = new Scanner(System.in);
         String answer = data.get(country); // this is the answer
-        String guess = input.next(); //user input
+        String guess = input.nextLine().trim(); //user input
         if (guess == answer) {
             points++;
             System.out.println("You are correct you loser :) \n");
+        } else {
+            System.out.println("You are wrong, and you are still a loser :( \n");
+            if (points != 0) {
+                points--;
+            } else {
+                System.out.println("How do you have zero points. SMH (-_-) \n");
+            }
         }
     }
+
+    public void showScores() {
+        System.out.println(name + "Your score is: " + points + "\n");
+    }
+
+    
 
 
 
@@ -24,13 +41,8 @@ public class Player {
 
     // private: 
 
-    private int points = 0;
-
-
-
-
-
-
+    private int points;
+    private String name;
 
 
 
