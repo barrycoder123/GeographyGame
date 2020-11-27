@@ -9,8 +9,6 @@ public class Game {
 
 	public static void main(String[] args)  throws Exception { 
 			
-		if(args[0].equalsIgnoreCase("Hello")){System.out.println("Hello");}
-		
 		// READ FROM THE FILE
 		// TODO: 
 		// open file 
@@ -67,7 +65,7 @@ public class Game {
 
 			for(int j = 0; j < 3; j++){
 				String currentCountry = countries[rn.nextInt(196)]; 
-				System.out.print(players[j].getName() + ", it's your turn.  What is the capital of ");
+				System.out.print("\n"+ players[j].getName() + ", it's your turn.  What is the capital of ");
 				System.out.println(currentCountry + "?");
 				players[j].move(currentCountry, data);
 

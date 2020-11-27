@@ -15,13 +15,26 @@ public class Player {
 		//System.out.println(Game.data);
 		Scanner input = new Scanner(System.in);
 		String answer = data.get(country); // this is the answer
+		double initialTime = System.currentTimeMillis();
 		String guess = input.nextLine().trim(); //user input
-		if (guess.equalsIgnoreCase(answer)) {
+		double finalTime = System.currentTimeMillis();
+		
+		
+		if((finalTime-initialTime)/1000>10){
+			System.out.println("\nOh, you took too long. (-1)");
+			if (points != 0) {
+				points--;
+			} else {
+				System.out.println("How do you have zero points. SMH (-_-) \n");
+			}
+	
+		}
+		else if (guess.equalsIgnoreCase(answer)) {
 			points++;
-			System.out.println("You are correct you loser :) \n");
+			System.out.println("\nYou are correct you loser (+1) :) \n");
 		} else {
-			System.out.println("You are wrong, and you are still a loser :( \n");
-			System.out.println("The correct answer is: " + answer + ":( \n");
+			System.out.println("\nYou are wrong, and you are still a loser (-1) :(");
+			System.out.println("The correct answer is: " + answer + ":(");
 			if (points != 0) {
 				points--;
 			} else {
