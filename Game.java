@@ -48,10 +48,6 @@ public class Game {
 		System.out.print("Welcome To The Geography Game!\nPlease enter the name");
 		System.out.println("of the contestants. When you are done, enter \"done\".");
 
-		//while (sc.next().compareTo("done") != 0) {
-
-		//Player nameInput = new Player(sc.next());	
-		//}
 		Player[] players = new Player[3];
 		int k = 0;
 		do{
@@ -67,9 +63,9 @@ public class Game {
 		Random rn = new Random();
 
 		// game loop
-		while (players[0].accessScore() < 11 || players[1].accessScore() < 11) {
+		while (players[0].accessScore() < 1 || players[1].accessScore() < 1 || players[2].accessScore() < 1) {
 
-			for(int j=0;j<3;j++){
+			for(int j = 0; j < 3; j++){
 				String currentCountry = countries[rn.nextInt(196)]; 
 				System.out.print(players[j].getName() + ", it's your turn.  What is the capital of ");
 				System.out.println(currentCountry + "?");
@@ -79,9 +75,6 @@ public class Game {
 	
 			for (Player p: players) 
 				p.showScores();
-
-			// generate random countries
-
 
 
 		}

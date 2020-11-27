@@ -21,6 +21,7 @@ public class Player {
 			System.out.println("You are correct you loser :) \n");
 		} else {
 			System.out.println("You are wrong, and you are still a loser :( \n");
+			System.out.println("The correct answer is: " + answer + ":( \n");
 			if (points != 0) {
 				points--;
 			} else {
