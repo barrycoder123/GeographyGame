@@ -3,7 +3,7 @@ import java.io.File;
 import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Random;
-
+import org.apache.commons.lang3.StringUtils; 
 public class Game {
 
 
@@ -78,15 +78,50 @@ public class Game {
 
 		Random rn = new Random();
 
+		//Establish Bordering Countries
+
+		Scanner borderScanner = new Scanner(new File("Bordering.txt"));
+		String[][] borderingCountries = new String [148][];
+		int counter = 0;
+		
+		while(borderScanner.hasNext()){
+			String currentLine = borderScanner.nextLine().trim();
+		
+			int indexOne = 0;
+			int counterTwo = 0;
+			borderingCountries[counter] = new String[StringUtils.countMatches(currentLine,',')];
+			for(int a=0; a<StringUtils.countMatches(currentLine,','); a++){
+				int indexTwo = currentLine.indexOf(",",indexOne);
+				//System.out.println(currentLine.substring(indexOne,indexTwo));
+				borderingCountries[counter][counterTwo++] = currentLine.substring(indexOne,indexTwo);
+				indexOne = indexTwo+1;	
+			}
+			counter++;
+		}
+//
+//		for(int a=0;a<borderingCountries.length;a++){
+//			for(int b=0;b<borderingCountries[a].length;b++){
+//				System.out.print(borderingCountries[a][b]);
+//			}	
+//			System.out.println();
+//		}
+
 		// game loop
 		boolean end = false;
 		while (end == false) {
+<<<<<<< HEAD
 			//System.out.println(players[0].accessScore() + " " + players[1].accessScore());
+=======
+			
+>>>>>>> da7a5f37ea9fb1d110af4fc049a1eeb5cb0b17af
 			for(int j = 0; j < 3; j++){
 				String currentCountry = countries[rn.nextInt(196)]; 
 				System.out.print("\n"+ players[j].getName() + ", it's your turn.  What is the capital of ");
 				System.out.println(currentCountry + "?");
 				players[j].move(currentCountry, data);
+
+				System.out.println("\nName one country that borders " + currentCountry +".");
+				player[j].guess(currentCountry, borderCountries);
 
 			}
 	
@@ -96,7 +131,11 @@ public class Game {
 				end = true;
 			}
 		}
-	}
+		
+	
+		
+		
+		}
 }
 
 
