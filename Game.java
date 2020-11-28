@@ -109,15 +109,8 @@ public class Game {
 		// game loop
 		boolean end = false;
 		while (end == false) {
-<<<<<<< HEAD
-<<<<<<< HEAD
 			//System.out.println(players[0].accessScore() + " " + players[1].accessScore());
-=======
 			
->>>>>>> da7a5f37ea9fb1d110af4fc049a1eeb5cb0b17af
-=======
-
->>>>>>> bd7c66333fd66778eebdfb9ddffde310ff91a8bc
 			for(int j = 0; j < 3; j++){
 				String currentCountry = countries[rn.nextInt(196)]; 
 				System.out.print("\n"+ players[j].getName() + ", it's your turn.  What is the capital of ");
