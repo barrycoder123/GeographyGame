@@ -40,6 +40,25 @@ public class Game {
 			data.put(countries[j], capitals[j]);
 		}
 
+		HashMap<String, String> flagData = new HashMap<>();
+		String[] flagFileNames = new String[196];
+
+        Scanner file2 = new Scanner(new File("flagdata.txt"));
+
+        int f = 0; 
+        while (file2.hasNext()) {
+            String values, line;
+
+            line = file2.nextLine().trim();
+            flagFileNames[f] = line;
+            
+            f++;
+        }
+        
+        for (int l = 0; l < 195; ++l) {
+            flagData.put(countries[l], flagFileNames[l]);
+        }
+
 		Scanner sc = new Scanner(System.in);
 		String name;
 		//Start Game
@@ -63,7 +82,7 @@ public class Game {
 		// game loop
 		boolean end = false;
 		while (end == false) {
-			System.out.println(players[0].accessScore() + " " + players[1].accessScore());
+			//System.out.println(players[0].accessScore() + " " + players[1].accessScore());
 			for(int j = 0; j < 3; j++){
 				String currentCountry = countries[rn.nextInt(196)]; 
 				System.out.print("\n"+ players[j].getName() + ", it's your turn.  What is the capital of ");
