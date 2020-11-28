@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-public class Flag {
+public class Flags {
 
     // Public:
     //

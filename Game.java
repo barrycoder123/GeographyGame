@@ -34,7 +34,6 @@ public class Game {
 
 		}
 
-		// populate the map
 
 		for (int j = 0; j < 195; ++j) {
 			data.put(countries[j], capitals[j]);
