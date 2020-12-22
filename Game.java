@@ -3,23 +3,19 @@ import java.io.File;
 import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Random;
-import org.apache.commons.lang3.StringUtils; 
+import org.apache.commons.lang3.StringUtils;
 public class Game {
 
 
 	public static void main(String[] args)  throws Exception { 
+        readData();
+        flagData();
+        borders();
+        contestants();
+        playGame();
+	}
 
-		// READ FROM THE FILE
-		// TODO: 
-		// open file 
-		// create data stucture - hashmap
-		// create two arrays - for countries and for capitals
-		// read file and populate the two arrays
-		// loop through the key array and add to hash map keys
-		// loop through the value array and add to hash map values
-		HashMap<String, String> data = new HashMap<>();
-		String[] countries = new String[196];
-		String[] capitals = new String[196];
+    public static void readData() throws Exception { 
 
 		Scanner file = new Scanner(new File("dataset.txt"));
 		int i = 0;
@@ -35,12 +31,12 @@ public class Game {
 		}
 
 
-		for (int j = 0; j < 195; ++j) {
+		for (int j = 0; j < 196; ++j) {
 			data.put(countries[j], capitals[j]);
 		}
+    }
 
-		HashMap<String, String> flagData = new HashMap<>();
-		String[] flagFileNames = new String[196];
+    public static void flagData() throws Exception {
 
 		Scanner file2 = new Scanner(new File("flagdata.txt"));
 
@@ -51,37 +47,19 @@ public class Game {
 			line = file2.nextLine().trim();
 			flagFileNames[f] = line;
 
+
 			f++;
 		}
 
-		for (int l = 0; l < 195; ++l) {
+		for (int l = 0; l < 196; ++l) {
 			flagData.put(countries[l], flagFileNames[l]);
 		}
+    }
 
-		Scanner sc = new Scanner(System.in);
-		String name;
-		//Start Game
-		System.out.print("Welcome To The Geography Game!\nPlease enter the name");
-		System.out.println("of the contestants. When you are done, enter \"done\".");
-
-		Player[] players = new Player[3];
-		int k = 0;
-		do{
-			name = sc.next();
-			if (!name.equals("done")){
-				players[k++] = new Player(name);
-			} else if(k!=3){
-				name = "";
-			}
-
-		} while(!name.equals("done")); 
-
-		Random rn = new Random();
-
+    public static void borders() throws Exception {
 		//Establish Bordering Countries
 
 		Scanner borderScanner = new Scanner(new File("Bordering.txt"));
-		String[][] borderingCountries = new String [148][];
 		int counter = 0;
 
 		while(borderScanner.hasNext()){
@@ -98,41 +76,68 @@ public class Game {
 			}
 			counter++;
 		}
-		//
-		//		for(int a=0;a<borderingCountries.length;a++){
-		//			for(int b=0;b<borderingCountries[a].length;b++){
-		//				System.out.print(borderingCountries[a][b]);
-		//			}	
-		//			System.out.println();
-		//		}
+        for (int i = 0; i < borderingCountries.length; ++i) {
+            for (int j = 0; j < borderingCountries[i].length; ++j) {
+                System.out.println(borderingCountries[i][j]);
+            }
+        }
+
+    }
+
+    public static void playGame() throws Exception {
+		Random rn = new Random();
 
 		// game loop
 		boolean end = false;
 		while (end == false) {
 			//System.out.println(players[0].accessScore() + " " + players[1].accessScore());
 			
-			for(int j = 0; j < 3; j++){
+			for(int j = 0; j < numPlayers; j++){
 				String currentCountry = countries[rn.nextInt(196)]; 
 				System.out.print("\n"+ players[j].getName() + ", it's your turn.  What is the capital of ");
 				System.out.println(currentCountry + "?");
 				players[j].move(currentCountry, data);
 
-				System.out.println("\nName one country that borders " + currentCountry +".");
-				player[j].guess(currentCountry, borderCountries);
-
+                System.out.println("\nName one country that borders " + currentCountry +".");
+                players[j].guess(currentCountry, borderingCountries);
 			}
 
 			for (Player p: players) 
 				p.showScores();
-			if(players[0].accessScore() == 10 || players[1].accessScore() == 10 || players[2].accessScore() == 10){
-				end = true;
-			}
+            for (Player p: players) {
+                if (p.accessScore() == 10) {
+                    end = true;
+                }
+            }
 		}
 
+    }
 
+    public static void contestants() throws Exception {
 
+		Scanner sc = new Scanner(System.in);
+		String name;
+		//Start Game
+		System.out.println("Welcome To The Geography Game!");
+		System.out.println("Enter the number of participants:");
+        numPlayers = sc.nextInt();
+		System.out.println("\nPlease enter the name of the contestants.");
 
-	}
+        players = new Player[numPlayers];
+        for (int i = 0; i < numPlayers; ++i) {
+            name = sc.next();
+            players[i] = new Player(name);
+        }
+    }
+
+    private static String[] countries = new String[196];
+    private static String[] capitals = new String[196];
+	private static HashMap<String, String> data = new HashMap<>();
+    private static HashMap<String, String> flagData = new HashMap<>();
+    private static String[] flagFileNames = new String[196];
+    private static String[][] borderingCountries = new String [148][];
+    private static int numPlayers;
+	private static Player[] players;
 }
 
 
