@@ -76,11 +76,11 @@ public class Game {
 			}
 			counter++;
 		}
-        for (int i = 0; i < borderingCountries.length; ++i) {
-            for (int j = 0; j < borderingCountries[i].length; ++j) {
-                System.out.println(borderingCountries[i][j]);
-            }
-        }
+        //for (int i = 0; i < borderingCountries.length; ++i) {
+            //for (int j = 0; j < borderingCountries[i].length; ++j) {
+                //System.out.println(borderingCountries[i][j]);
+            //}
+        //}
 
     }
 
@@ -105,7 +105,7 @@ public class Game {
 			for (Player p: players) 
 				p.showScores();
             for (Player p: players) {
-                if (p.accessScore() == 10) {
+                if (p.accessScore() >= 10) {
                     end = true;
                 }
             }
