@@ -3,3 +3,6 @@ Flags.class
 Game.class
 commons-lang3-3.11/
 manage/
+/GameUI.class
+/GameUI$1.class
+/SmartButton.class

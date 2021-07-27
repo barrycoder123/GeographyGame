@@ -3,7 +3,7 @@ Albania - Tirana
 Algeria - Algiers
 Andorra - Andorra la Vella
 Angola - Luanda
-Antigua and Barbuda - Saint John’s
+Antigua and Barbuda - Saint John's
 Argentina - Buenos Aires
 Armenia - Yerevan
 Australia - Canberra
@@ -31,24 +31,23 @@ Cameroon - Yaounde
 Canada - Ottawa
 Cape Verde - Praia
 Central African Republic - Bangui
-Chad - N’Djamena
+Chad - N'Djamena
 Chile - Santiago
 China - Beijing
 Colombia - Bogota
 Comoros - Moroni
-Congo, Republic of the - Brazzaville
-Congo, Democratic Republic of the - Kinshasa
 Costa Rica - San Jose
-Cote d’Ivoire - Yamoussoukro
+C�te d'Ivoire - Yamoussoukro
 Croatia - Zagreb
 Cuba - Havana
 Cyprus - Nicosia
 Czech Republic - Prague
+Democratic Republic of the Congo - Kinshasa
 Denmark - Copenhagen
 Djibouti - Djibouti
 Dominica - Roseau
 Dominican Republic - Santo Domingo
-East Timor (Timor-Leste) - Dili
+Timor-Leste - Dili
 Ecuador - Quito
 Egypt - Cairo
 El Salvador - San Salvador
@@ -56,6 +55,7 @@ Equatorial Guinea - Malabo
 Eritrea - Asmara
 Estonia - Tallinn
 Ethiopia - Addis Ababa
+Federated States of Micronesia - Palikir
 Fiji - Suva
 Finland - Helsinki
 France - Paris
@@ -65,10 +65,10 @@ Georgia - Tbilisi
 Germany - Berlin
 Ghana - Accra
 Greece - Athens
-Grenada - Saint George’s
+Grenada - Saint George's
 Guatemala - Guatemala City
 Guinea - Conakry
-Guinea-Bissau - Bissau
+Guinea Bissau - Bissau
 Guyana - Georgetown
 Haiti - Port-au-Prince
 Honduras - Tegucigalpa
@@ -79,7 +79,7 @@ Indonesia - Jakarta
 Iran - Tehran
 Iraq - Baghdad
 Ireland - Dublin
-Israel - Jerusalem*
+Israel - Jerusalem
 Italy - Rome
 Jamaica - Kingston
 Japan - Tokyo
@@ -87,8 +87,6 @@ Jordan - Amman
 Kazakhstan - Astana
 Kenya - Nairobi
 Kiribati - Tarawa Atoll
-Korea, North - Pyongyang
-Korea, South - Seoul
 Kosovo - Pristina
 Kuwait - Kuwait City
 Kyrgyzstan - Bishkek
@@ -112,7 +110,6 @@ Marshall Islands - Majuro
 Mauritania - Nouakchott
 Mauritius - Port Louis
 Mexico - Mexico City
-Micronesia, Federated States of - Palikir
 Moldova - Chisinau
 Monaco - Monaco
 Mongolia - Ulaanbaatar
@@ -128,6 +125,7 @@ New Zealand - Wellington
 Nicaragua - Managua
 Niger - Niamey
 Nigeria - Abuja
+North Korea- Pyongyang
 Norway - Oslo
 Oman - Muscat
 Pakistan - Islamabad
@@ -140,6 +138,7 @@ Philippines - Manila
 Poland - Warsaw
 Portugal - Lisbon
 Qatar - Doha
+Republic of the Congo - Brazzaville
 Romania - Bucharest
 Russia - Moscow
 Rwanda - Kigali
@@ -161,6 +160,7 @@ Solomon Islands - Honiara
 Somalia - Mogadishu
 South Africa - Pretoria, Cape Town, Bloemfontein
 South Sudan - Juba
+South Korea - Seoul
 Spain - Madrid
 Sri Lanka - Colombo, Sri Jayewardenepura Kotte
 Sudan - Khartoum
@@ -174,7 +174,7 @@ Tajikistan - Dushanbe
 Tanzania - Dodoma
 Thailand - Bangkok
 Togo - Lome
-Tonga - Nuku’alofa
+Tonga - Nuku'alofa
 Trinidad and Tobago - Port-of-Spain
 Tunisia - Tunis
 Turkey - Ankara
@@ -188,7 +188,7 @@ United States of America - Washington D.C.
 Uruguay - Montevideo
 Uzbekistan - Tashkent
 Vanuatu - Port-Vila
-Vatican City (Holy See) - Vatican City
+Vatican City - Vatican City
 Venezuela - Caracas
 Vietnam - Hanoi
 Yemen - Sanaa
