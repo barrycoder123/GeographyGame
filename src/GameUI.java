@@ -386,7 +386,7 @@ public class GameUI extends JFrame implements ActionListener{
 			
 			for(int i=0;i<4; i++) {
 				if(i==ran) {
-					buttons[i].setText(capMap.get(countries[rn.nextInt(countries.length)]));
+					buttons[i].setText(capMap.get(current));
 					buttons[i].correct = true;
 				} else {
 					buttons[i].setText(capMap.get(countries[rn.nextInt(countries.length)]));
