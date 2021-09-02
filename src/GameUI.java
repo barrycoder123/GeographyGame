@@ -23,12 +23,13 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 
 public class GameUI extends JFrame implements ActionListener{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	static GameUI ui;
 	JButton start, restart;
 	Player main;
 	JPanel game,centerCenterPanel,centerPanel,scoreBoard;
@@ -37,6 +38,7 @@ public class GameUI extends JFrame implements ActionListener{
 	static JLabel prompt = new JLabel("Hello");
 	static JTextArea exp;
 	static JLabel score = new JLabel("Score: 0");
+	static JLabel timer = new JLabel("Time: N/A");
 	static JComboBox box;
 	static String[] countries = Game.getCountries();
 	static ArrayList<String> testing = new ArrayList(Arrays.asList(Game.getCountries()));
@@ -47,7 +49,7 @@ public class GameUI extends JFrame implements ActionListener{
 	static ArrayList<String> bordCountries = Game.getBordCountries();
 	static SmartButton c1,c2,c3,c4;
 	static JPanel menu;
-	
+	static int tempFix = 0;
 	GameUI(){
 		ImageIcon icon = new ImageIcon("geo.png");
 		this.setIconImage(icon.getImage());
@@ -80,7 +82,7 @@ public class GameUI extends JFrame implements ActionListener{
 		JLabel jl = new JLabel("Game Mode: ");
 		selection.add(jl);
 		
-		String[] gameModes = {"Standard", "Survival", "Timed (Unfinished)"};
+		String[] gameModes = {"Standard", "Survival", "Timed"};
 		box = new JComboBox(gameModes);
 		selection.add(box);
 		
@@ -186,12 +188,15 @@ public class GameUI extends JFrame implements ActionListener{
 		
 		
 		/////////////////////////////////////////////////
-		
+		JPanel topBar = new JPanel();
+		topBar.add(score);
+		topBar.add(timer);
+		/////////////////////////////////////////////////
 		centerPanel.add(prompt,BorderLayout.NORTH);
 		centerPanel.add(centerCenterPanel, BorderLayout.CENTER);
 		game.add(centerPanel, BorderLayout.CENTER);
-		game.add(score, BorderLayout.NORTH);
-		
+		game.add(topBar, BorderLayout.NORTH);
+
 		add(menu);
 		
 		setVisible(true);
@@ -201,7 +206,7 @@ public class GameUI extends JFrame implements ActionListener{
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override 
 			public void run() {
-				new GameUI();
+				ui = new GameUI();
 			}
 		});
 		
@@ -401,15 +406,20 @@ public class GameUI extends JFrame implements ActionListener{
 			testing.remove(current);
 		///////////////////////////////////////////////////////////////
 		} else if(gameMode==2) {
+			if(tempFix==0) {
+			TimeThread time = new TimeThread(timer, ui);
+			time.start();
+			tempFix++;
+			}
 			String current = testing.get(rn.nextInt(testing.size()));
-			testing.remove(current);
+			
 			prompt.setText("What is the capital of " + current + "?");
 			SmartButton[] buttons = {c1,c2,c3,c4};
 			int ran = rn.nextInt(4);
 			
 			for(int i=0;i<4; i++) {
 				if(i==ran) {
-					buttons[i].setText(capMap.get(countries[rn.nextInt(countries.length)]));
+					buttons[i].setText(capMap.get(current));
 					buttons[i].correct = true;
 				} else {
 					buttons[i].setText(capMap.get(countries[rn.nextInt(countries.length)]));
@@ -417,10 +427,9 @@ public class GameUI extends JFrame implements ActionListener{
 				}
 			}
 			
-			if(counter>196) {
-				//Show End Board
-			}
-		}
+			
+			
+		} 
 		/////////////////////////////////////////////////////////////////
 	}
 	
@@ -486,6 +495,35 @@ public class GameUI extends JFrame implements ActionListener{
 		}
 		
 	}
+	
+}
+class TimeThread extends Thread {
+	Timer t;
+	JLabel timer;
+	GameUI frame;
+	static int time = 60;
+	
+	public TimeThread(JLabel timer, GameUI ui) {
+		this.timer = timer;
+		frame = ui;
+		time = 60;
+	}
+	
+	@Override
+	public void run() {
+		ActionListener a = new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				timer.setText("Time Remaining: " + (Integer.toString(time--)));			
+				if(time == 0) {
+					frame.showScoreBoard();
+				}
+			}};
+		t = new Timer(1000,a);
+		t.start();
+	}
+	
 	
 }
 
