@@ -1,7 +1,12 @@
 import java.util.Scanner;
 import javax.swing.ImageIcon;
+
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -17,8 +22,12 @@ public class Game {
     }
 
 	public static String[] getCountries() {
+		
+		InputStream in = Game.class.getResourceAsStream("/dataset.txt");
+		
 		String[] countries = new String[196];
-		try(Scanner file= new Scanner(new File("dataset.txt"))) {
+		
+		try(Scanner file= new Scanner(in)) {
 			int i = 0;
 			while (file.hasNext()) {
 				String line;
@@ -28,10 +37,7 @@ public class Game {
 		
 				i++;
 			}	
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
-		
+		} 
 		return countries;
 	}
 	
@@ -39,7 +45,9 @@ public class Game {
 		 HashMap<String, String> capMap = new HashMap<>();
 		 String[] countries = getCountries();
 		 
-		 try(Scanner file= new Scanner(new File("dataset.txt"))) {
+		 InputStream in = Game.class.getResourceAsStream("/dataset.txt");
+		 
+		 try(Scanner file= new Scanner(in)) {
 				int i = 0;
 				while (file.hasNext()) {
 					String line;
@@ -54,17 +62,16 @@ public class Game {
 					capMap.put(countries[j], capitals[j]);
 				}
 				
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
-			}
+			} 
 		 return capMap;
 	}
 	
 	public static ArrayList<String> getFlagsCountries() {
-		
 		 ArrayList<String> countries = new ArrayList<>();
+		 InputStream in = Game.class.getResourceAsStream("/flagdata.txt");
 		 
-		 try(Scanner file= new Scanner(new File("flagdata.txt"))) {
+		 
+		 try(Scanner file= new Scanner(in)) {
 				
 				while (file.hasNext()) {
 					String line = file.nextLine().trim(); 
@@ -72,8 +79,6 @@ public class Game {
 					name = name.replace('_', ' ');
 					countries.add(name);
 				}
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
 			}
 		 
 		 return countries;
@@ -84,8 +89,9 @@ public class Game {
 		 ArrayList<String> countries = new ArrayList<>();
 		 ArrayList<ImageIcon> images = new ArrayList<>();
 		 
+		 InputStream in = Game.class.getResourceAsStream("/flagdata.txt");
 		 
-		 try(Scanner file= new Scanner(new File("flagdata.txt"))) {
+		 try(Scanner file= new Scanner(in)) {
 				
 				while (file.hasNext()) {
 					String line = file.nextLine().trim(); 
@@ -101,8 +107,6 @@ public class Game {
 					flagMap.put(countries.get(j), images.get(j));
 				}
 				
-			} catch (FileNotFoundException e) {
-				e.printStackTrace();
 			} 
 		 
 		 return flagMap;
@@ -110,9 +114,9 @@ public class Game {
 	
 	public static ArrayList<String> getBordCountries() {
 		 ArrayList<String> bordMap = new ArrayList<>();
+		 InputStream in = Game.class.getResourceAsStream("/Bordering.txt");
 		 
-		 
-		 try(Scanner borderScanner = new Scanner(new File("Bordering.txt"))) {
+		 try(Scanner borderScanner = new Scanner(in)) {
 				while(borderScanner.hasNext()){
 
 					String currentLine = borderScanner.nextLine().trim();
@@ -120,10 +124,6 @@ public class Game {
 					String main = lineScanner.next();
 					bordMap.add(main);
 				}
-				
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			}
 		 
 		 return bordMap;
@@ -131,9 +131,9 @@ public class Game {
 	
 	public static HashMap<String,String[]> getBordMap() {
 		 HashMap<String, String[]> bordMap = new HashMap<>();
+		 InputStream in = Game.class.getResourceAsStream("/Bordering.txt");
 		 
-		 
-		 try(Scanner borderScanner = new Scanner(new File("Bordering.txt"))) {
+		 try(Scanner borderScanner = new Scanner(in)) {
 				while(borderScanner.hasNext()){
 					int counter = 0;
 					
@@ -153,11 +153,7 @@ public class Game {
 					bordMap.put(main, arr);
 				}
 				
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		 
+			} 
 		 return bordMap;
 	}
     
